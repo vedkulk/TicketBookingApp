@@ -1,0 +1,35 @@
+## ---------- .NET ----------
+# Build output — regenerated every build, never source of truth
+bin/
+obj/
+
+# User-specific IDE/tooling files (Rider/VS generate these per-machine)
+*.user
+*.suo
+.vs/
+
+## ---------- Angular / Node ----------
+# Installed packages — reinstalled via package.json + package-lock.json, never committed
+node_modules/
+
+# Angular build output
+dist/
+.angular/
+
+## ---------- Environment / secrets ----------
+# Connection strings, API keys, JWT secrets — NEVER commit these
+*.env
+appsettings.Development.json
+appsettings.Local.json
+
+## ---------- Docker ----------
+# Local override files people sometimes create for personal debugging
+docker-compose.override.yml
+
+## ---------- OS-specific junk ----------
+.DS_Store
+Thumbs.db
+
+## ---------- Editor ----------
+.vscode/
+.idea/
