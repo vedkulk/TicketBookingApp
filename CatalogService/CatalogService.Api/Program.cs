@@ -12,6 +12,8 @@ builder.Services.AddDbContext<CatalogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CatalogDbConnection")));
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<EventService>();
+builder.Services.AddScoped<IVenueRepository, VenueRepository>();
+builder.Services.AddScoped<VenueService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

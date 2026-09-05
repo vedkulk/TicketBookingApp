@@ -20,4 +20,10 @@ public class EventRepository : IEventRepository{
     {
         return await _context.Events.FindAsync(id);
     }
+
+    public async Task<Event> AddAsync(Event newEvent){
+        _context.Events.Add(newEvent);
+        await _context.SaveChangesAsync();
+        return newEvent;
+    }
 }

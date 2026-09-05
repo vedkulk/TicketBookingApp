@@ -1,6 +1,5 @@
 using CatalogService.Core.Interfaces;
 using CatalogService.Models;
-
 namespace CatalogService.Core.Services;
 
 public class EventService{
@@ -19,5 +18,10 @@ public class EventService{
     public async Task<Event?> GetEventById(int id)
     {
         return await _repository.GetByIdAsync(id);
+    }
+
+    public async Task<Event> CreateEvent(Event newEvent)
+    {
+        return await _repository.AddAsync(newEvent);
     }
 }

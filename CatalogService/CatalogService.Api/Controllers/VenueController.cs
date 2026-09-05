@@ -7,26 +7,26 @@ namespace CatalogService.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EventsController: ControllerBase
+public class VenuesController: ControllerBase
 {
-    private readonly EventService _eventService;
+    private readonly VenueService _VenueService;
 
-    public EventsController(EventService eventService)
+    public VenuesController(VenueService VenueService)
     {
-        _eventService = eventService;
+        _VenueService = VenueService;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var events = await _eventService.GetAllEvents();
-        return Ok(events);
+        var Venues = await _VenueService.GetAllVenues();
+        return Ok(Venues);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var evnt = await _eventService.GetEventById(id);
+        var evnt = await _VenueService.GetVenueById(id);
         if (evnt == null)
         {
             return NotFound();
@@ -35,14 +35,13 @@ public class EventsController: ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateEventDto dto)
+    public async Task<IActionResult> Create(CreateVenueDto dto)
     {
-        var newEvent = new Event{
+        var newVenue = new Venue{
             Name = dto.Name,
-            Date = dto.Date,
-            VenueId = dto.VenueId,
+            Address = dto.Address
         };
-        var created = await _eventService.CreateEvent(newEvent); // mapping goes here
+        var created = await _VenueService.CreateVenue(newVenue); // mapping goes here
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 }
